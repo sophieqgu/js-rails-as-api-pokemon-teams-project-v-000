@@ -13,10 +13,8 @@ function fetchTrainers() {
   fetch(TRAINERS_URL)
   .then(response => response.json())
   .then(trainersObject => {
-    for (const trainer in trainersObject) {
-      if (trainersObject.hasOwnProperty(trainer)) {
-        renderTrainer(trainersObject[trainer])
-      }
+    for (const trainer of trainersObject) {
+      renderTrainer(trainer)
     }
   });
 }
@@ -38,10 +36,8 @@ function renderTrainer(trainer) {
   const ul = document.createElement("ul")
   div.appendChild(ul)
   // render each pokemon on team
-  for (const pokemon in trainer.pokemons) {
-    if (trainer.pokemons.hasOwnProperty(pokemon)) {
-      renderPokemon(trainer.pokemons[pokemon], ul)
-    }
+  for (const pokemon of trainer.pokemons) {
+    renderPokemon(pokemon, ul)
   }
 }
 
